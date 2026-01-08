@@ -1,12 +1,12 @@
-import { Heart, Filter, ArrowUpDown, ChevronRight, Star, Loader2, ChevronLeft, Grid, List, X } from "lucide-react"
+import { Heart, ChevronRight, Star, Grid, List, X } from "lucide-react"
 import { useEffect, useState, useCallback } from "react"
 import { useNavigate, useParams, Link } from "react-router-dom"
 import Footer from "../Layouts/Footer"
 import NavBar from "../Layouts/Navbar"
-import { Button } from "../Layouts/button"
+// import { Button } from "../Layouts/button"
 import { baseurl } from "../../Constant/Base"
 import axios from "axios"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 
 interface CategoryId {
   _id: string;
@@ -73,13 +73,11 @@ export default function FilterProduct() {
 
   const [favorites, setFavorites] = useState<{ [key: string]: boolean }>({})
   const [visibleProducts, setVisibleProducts] = useState(12)
-  const [productsPerRow, setProductsPerRow] = useState(4)
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
   const [allProducts, setAllProducts] = useState<Product[]>([])
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
-  const [categories, setCategories] = useState<Category[]>([])
+  const [, setCategories] = useState<Category[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [showFilters, setShowFilters] = useState(false)
   const [activeImageIndex, setActiveImageIndex] = useState<{ [key: string]: number }>({})
   const [currentCategory, setCurrentCategory] = useState<string>("")
   const [currentSubCategory, setCurrentSubCategory] = useState<string>("")
@@ -179,7 +177,7 @@ export default function FilterProduct() {
         setAllProducts(productsWithMockData)
         setFilteredProducts(productsWithMockData)
         const initialActiveImages: { [key: string]: number } = {}
-        productsWithMockData.forEach(product => {
+        productsWithMockData.forEach((product: { _id: string | number }) => {
           initialActiveImages[product._id] = 0
         })
         setActiveImageIndex(initialActiveImages)

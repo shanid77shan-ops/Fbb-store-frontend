@@ -10,21 +10,17 @@ import {
   ChevronRight, 
   ArrowRight, 
   Store, 
-  Phone, 
-  Mail, 
+ 
   Tag,
-  Users,
   Award,
   Shield,
   Globe,
-  Sparkles,
   Star,
   Clock,
   MapPin,
   CheckCircle
 } from "lucide-react";
-import { FiArrowRight, FiCheck } from "react-icons/fi";
-import { RiStarFill } from "react-icons/ri";
+import { FiArrowRight } from "react-icons/fi";
 
 interface Seller {
   _id: string;
@@ -48,7 +44,7 @@ const SellerPages: React.FC = () => {
   const [selectedSeller, setSelectedSeller] = useState<string | null>(null);
   const [loadingSellers, setLoadingSellers] = useState(false);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [scrolled, setScrolled] = useState(false);
+  const [, setScrolled] = useState(false);
   const navigate = useNavigate();
 
   const api = axios.create({
@@ -76,13 +72,14 @@ const SellerPages: React.FC = () => {
     }
   ];
 
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -173,41 +170,8 @@ const SellerPages: React.FC = () => {
     }
   ];
 
-  const styleQuotes = [
-    {
-      quote: "Quality is never an accident; it is always the result of intelligent effort.",
-      author: "John Ruskin"
-    },
-    {
-      quote: "The bitterness of poor quality remains long after the sweetness of low price is forgotten.",
-      author: "Benjamin Franklin"
-    },
-    {
-      quote: "Excellence is not a skill, it's an attitude.",
-      author: "Ralph Marston"
-    }
-  ];
 
-  const testimonials = [
-    {
-      name: "Alexandra Chen",
-      role: "Fashion Director",
-      content: "The quality of sellers on this platform is exceptional. Each partner brings unique craftsmanship.",
-      rating: 5
-    },
-    {
-      name: "Marcus Rodriguez",
-      role: "Boutique Owner",
-      content: "Working with verified sellers has transformed our inventory quality and customer satisfaction.",
-      rating: 5
-    },
-    {
-      name: "Sophie Williams",
-      role: "Style Consultant",
-      content: "The curation of sellers here is unparalleled. Every partnership represents excellence.",
-      rating: 5
-    }
-  ];
+
 
   return (
     <div className="min-h-screen bg-white">

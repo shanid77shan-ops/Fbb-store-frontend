@@ -12,12 +12,18 @@ import TrendingCarousel from "./Carousel";
 import axios from "axios";
 import { baseurl } from "../../Constant/Base";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowRight, ChevronLeft, ChevronRight, Clock, Shield, Truck, Award, Sparkles, Zap, Heart, Globe, Package, Users, Quote } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Clock, Shield, Truck, Award, Sparkles, Zap, Heart, Users, Quote } from "lucide-react";
 
 const Hero = ({ onShopNowClick = () => {} }) => {
+  interface Seller {
+    _id: string;
+    name: string;
+    Image:string;
+  }
+  
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
-  const [sellers, setSellers] = useState([]);
+  const [sellers, setSellers] = useState<Seller[]>([]);
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [isHovering, setIsHovering] = useState(false);
   const [loadingSellers, setLoadingSellers] = useState(true);
@@ -225,7 +231,7 @@ const Hero = ({ onShopNowClick = () => {} }) => {
   const nextBannerSlide = () => setCurrentBannerIndex((prev) => (prev + 1) % bannerSlides.length);
   const prevBannerSlide = () => setCurrentBannerIndex((prev) => (prev - 1 + bannerSlides.length) % bannerSlides.length);
 
-  const handleSellerClick = (sellerId) => navigate(`/seller-list/${sellerId}`);
+  const handleSellerClick = (sellerId: string) => navigate(`/seller-list/${sellerId}`);
   const handleClick = () => navigate("/seller-list");
 
   const displaySellers = sellers.slice(0, 4);
@@ -253,20 +259,7 @@ const Hero = ({ onShopNowClick = () => {} }) => {
     }
   ];
 
-  const aboutContent = [
-    {
-      title: "Our Journey",
-      description: "Founded in 2010, FBB emerged from a vision to blend traditional craftsmanship with contemporary style."
-    },
-    {
-      title: "Craftsmanship",
-      description: "Every product undergoes quality checks by our team of experts."
-    },
-    {
-      title: "Ethical Practices",
-      description: "We are committed to ethical sourcing and sustainable practices."
-    }
-  ];
+
 
   const statistics = [
     { value: "150K+", label: "Happy Customers" },
@@ -532,15 +525,21 @@ const Hero = ({ onShopNowClick = () => {} }) => {
                   onClick={() => handleSellerClick(seller._id)}
                 >
                   <div className="relative h-48">
-                    <img
-                      src={seller.Image || "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=400&h=300&fit=crop&auto=format&q=80"}
-                      alt={seller.name}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                      loading="lazy"
-                      onError={(e) => {
-                        e.target.src = "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=400&h=300&fit=crop&auto=format&q=80";
-                      }}
-                    />
+                  <img
+                src={
+                  seller.Image ||
+                  "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=400&h=300&fit=crop&auto=format&q=80"
+                }
+                alt={seller.name}
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                loading="lazy"
+                onError={(e) => {
+                  const img = e.currentTarget as HTMLImageElement;
+                  img.src =
+                    "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=400&h=300&fit=crop&auto=format&q=80";
+                }}
+/>
+
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                     <div className="absolute bottom-4 left-4">
                       <h3 className="text-white font-bold text-lg">{seller.name}</h3>

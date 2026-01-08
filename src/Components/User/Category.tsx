@@ -14,13 +14,10 @@ import {
   Package,
   Award,
   Shield,
-  Sparkles,
   Star,
-  Users,
-  Clock,
   CheckCircle
 } from "lucide-react";
-import { FiArrowRight, FiCheck } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 import { RiStarFill } from "react-icons/ri";
 
 interface Category {
@@ -155,29 +152,8 @@ const CategoryPages: React.FC = () => {
     }
   ];
 
-  const styleQuotes = [
-    {
-      quote: "Style is a way to say who you are without having to speak.",
-      author: "Rachel Zoe"
-    },
-    {
-      quote: "Fashion is the armor to survive the reality of everyday life.",
-      author: "Bill Cunningham"
-    },
-    {
-      quote: "The joy of dressing is an art.",
-      author: "John Galliano"
-    }
-  ];
 
-  const categoryTypes = [
-    { name: "Apparel", count: 45, color: "bg-blue-50 text-blue-600" },
-    { name: "Accessories", count: 28, color: "bg-purple-50 text-purple-600" },
-    { name: "Home", count: 32, color: "bg-green-50 text-green-600" },
-    { name: "Kitchen", count: 19, color: "bg-orange-50 text-orange-600" },
-    { name: "Electronics", count: 23, color: "bg-red-50 text-red-600" },
-    { name: "Wellness", count: 15, color: "bg-teal-50 text-teal-600" }
-  ];
+
 
   return (
     <div className="min-h-screen bg-white">

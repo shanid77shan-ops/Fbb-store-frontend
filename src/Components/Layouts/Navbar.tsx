@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Search, User, ShoppingBag, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import fbb from "./Img/fbb.png";
 import { useNavigate } from 'react-router-dom';
 
@@ -19,14 +19,7 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const navigate = useNavigate();
   
-  const fashionCategories = [
-    { label: 'Men', href: '/shop/men' },
-    { label: 'Women', href: '/shop/women' },
-    { label: 'Accessories', href: '/shop/accessories' },
-    { label: 'Footwear', href: '/shop/footwear' },
-    { label: 'Watches', href: '/shop/watches' },
-    { label: 'Sunglasses', href: '/shop/sunglasses' }
-  ];
+
 
   const navItems: NavItem[] = [
     { label: 'Home', href: '/' },

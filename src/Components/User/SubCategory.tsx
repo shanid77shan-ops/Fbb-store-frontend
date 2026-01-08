@@ -15,7 +15,6 @@ import {
   Package,
   Award,
   Shield,
-  Sparkles,
   Star,
   ChevronRight,
   ChevronLeft,
@@ -23,8 +22,7 @@ import {
   Grid3x3,
   CheckCircle
 } from "lucide-react";
-import { FiArrowRight, FiCheck } from "react-icons/fi";
-import { RiStarFill } from "react-icons/ri";
+import { FiArrowRight } from "react-icons/fi";
 
 interface Category {
   name: string;
@@ -41,7 +39,7 @@ const Subcategory: React.FC = () => {
   const [viewStyle, setViewStyle] = useState<"grid" | "rows">("grid");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [scrolled, setScrolled] = useState(false);
+  const [, setScrolled] = useState(false);
   const navigate = useNavigate();
   const { category, seller } = useParams();
 
@@ -70,13 +68,14 @@ const Subcategory: React.FC = () => {
     }
   ];
 
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -154,20 +153,7 @@ const Subcategory: React.FC = () => {
     }
   ];
 
-  const styleQuotes = [
-    {
-      quote: "The details are not the details. They make the design.",
-      author: "Charles Eames"
-    },
-    {
-      quote: "Good design is as little design as possible.",
-      author: "Dieter Rams"
-    },
-    {
-      quote: "Design is not just what it looks like and feels like. Design is how it works.",
-      author: "Steve Jobs"
-    }
-  ];
+ 
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -413,7 +399,7 @@ const Subcategory: React.FC = () => {
                 "space-y-4"
               }
             >
-              {filteredCategories.map((cat, index) => (
+              {filteredCategories.map((cat) => (
                 <motion.div
                   key={cat._id}
                   variants={itemVariants}

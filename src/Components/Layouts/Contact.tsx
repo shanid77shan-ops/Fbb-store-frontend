@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock, MessageSquare, Send, Sparkles } from "lucide-react"
+import { MapPin, Phone,  Clock, MessageSquare, Send, Sparkles } from "lucide-react"
 import Footer from "../Layouts/Footer"
 import NavBar from "../Layouts/Navbar"
 import { motion } from "framer-motion"

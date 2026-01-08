@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock, Instagram, Users, Award, Globe, Shield, Sparkles, Star, Quote } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, Instagram, Users, Award, Globe, Shield,Star, Quote } from "lucide-react"
 import Footer from "./Footer"
 import NavBar from "./Navbar"
 import { motion } from "framer-motion"
