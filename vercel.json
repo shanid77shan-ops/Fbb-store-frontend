@@ -1,49 +1,32 @@
 {
     "rewrites": [
       {
-        "source": "/(.*)",
+        "source": "/:path*",
         "destination": "/index.html"
       }
     ],
     "headers": [
       {
-        "source": "/(.*)",
+        "source": "/:path*",
         "headers": [
-          {
-            "key": "X-Frame-Options",
-            "value": "DENY"
-          },
-          {
-            "key": "X-Content-Type-Options",
-            "value": "nosniff"
-          },
-          {
-            "key": "Referrer-Policy",
-            "value": "strict-origin-when-cross-origin"
-          },
-          {
-            "key": "Permissions-Policy",
-            "value": "geolocation=(), microphone=(), camera=()"
-          }
+          { "key": "X-Frame-Options", "value": "DENY" },
+          { "key": "X-Content-Type-Options", "value": "nosniff" },
+          { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+          { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
         ]
       },
       {
-        "source": "/static/(.*)",
+        "source": "/:path*.js",
         "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public, max-age=31536000, immutable"
-          }
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
         ]
       },
       {
-        "source": "/(.*\\.(js|css))",
+        "source": "/:path*.css",
         "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public, max-age=31536000"
-          }
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
         ]
       }
     ]
   }
+  
