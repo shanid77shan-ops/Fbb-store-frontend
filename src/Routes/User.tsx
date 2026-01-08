@@ -9,6 +9,7 @@ import Subcategory from "../Components/User/SubCategory";
 import Types from "../Components/User/Types";
 import AboutPage from "../Components/Layouts/About";
 import SellerPages from "../Components/User/Sellers";
+import ContactPage from "../Components/Layouts/Contact";
 
 const User: React.FC = () => {
     return (
@@ -25,6 +26,7 @@ const User: React.FC = () => {
           <Route path="/about" element={<AboutPage/>}/>
           <Route path="/seller-list" element={<SellerPages/>}/>
           <Route path="/seller-list/:id" element={<CategoryPages/>}/>
+          <Route path="/contact" element={<ContactPage/>}/>
        </Routes>
       </>
     );

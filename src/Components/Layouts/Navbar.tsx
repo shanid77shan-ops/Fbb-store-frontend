@@ -33,10 +33,8 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
     { 
       label: 'Shop', 
       href: '/shop',
-      subItems: fashionCategories
+  
     },
-    { label: 'New Arrivals', href: '/new-arrivals' },
-    { label: 'Collections', href: '/collections' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
     { label: 'Sell With Us', href: '/seller/dashboard' },
@@ -116,26 +114,7 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
           </div>
 
           {/* Desktop Icons */}
-          <div className="hidden lg:flex items-center space-x-6">
-            <button className="text-white hover:text-gold-400 transition-colors duration-300">
-              <Search className="w-5 h-5" />
-            </button>
-            <button 
-              onClick={() => navigate('/account')}
-              className="text-white hover:text-gold-400 transition-colors duration-300"
-            >
-              <User className="w-5 h-5" />
-            </button>
-            <button 
-              onClick={() => navigate('/cart')}
-              className="text-white hover:text-gold-400 transition-colors duration-300 relative"
-            >
-              <ShoppingBag className="w-5 h-5" />
-              <span className="absolute -top-2 -right-2 bg-gold-400 text-black text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                0
-              </span>
-            </button>
-          </div>
+    
 
           {/* Mobile menu button */}
           <div className="lg:hidden">
@@ -185,20 +164,7 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
             ))}
             
             {/* Mobile Icons */}
-            <div className="flex items-center justify-center space-x-8 pt-6 border-t border-gray-800">
-              <button className="text-white hover:text-gold-400">
-                <Search className="w-6 h-6" />
-              </button>
-              <button className="text-white hover:text-gold-400">
-                <User className="w-6 h-6" />
-              </button>
-              <button className="text-white hover:text-gold-400 relative">
-                <ShoppingBag className="w-6 h-6" />
-                <span className="absolute -top-2 -right-2 bg-gold-400 text-black text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  0
-                </span>
-              </button>
-            </div>
+           
           </div>
         </div>
       )}

@@ -18,36 +18,33 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   
   const shopCategories = [
-    { name: "Men's Fashion", href: "/shop/men" },
-    { name: "Women's Fashion", href: "/shop/women" },
-    { name: "Accessories", href: "/shop/accessories" },
-    { name: "Footwear", href: "/shop/footwear" },
-    { name: "Watches", href: "/shop/watches" },
-    { name: "Sunglasses", href: "/shop/sunglasses" },
-    { name: "Bags & Luggage", href: "/shop/bags" },
-    { name: "Jewelry", href: "/shop/jewelry" }
+    { name: "Men's Fashion", href: "/shop" },
+    { name: "Women's Fashion", href: "/shop" },
+    { name: "Accessories", href: "/shop" },
+    { name: "Footwear", href: "/shop" },
+    { name: "Watches", href: "/shop" },
+    { name: "Sunglasses", href: "/shop" },
+    { name: "Bags & Luggage", href: "/shop" },
+    { name: "Jewelry", href: "/shop" }
   ];
 
   const companyLinks = [
     { name: "About Us", href: "/about" },
-    { name: "Our Story", href: "/story" },
-    { name: "Careers", href: "/careers" },
-    { name: "Press", href: "/press" },
-    { name: "Sustainability", href: "/sustainability" },
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms of Service", href: "/terms" },
-    { name: "Cookie Policy", href: "/cookies" }
+    { name: "Our Story", href: "/about" },
+    // { name: "Privacy Policy", href: "/privacy" },
+    // { name: "Terms of Service", href: "/terms" },
+    // { name: "Cookie Policy", href: "/cookies" }
   ];
 
   const customerService = [
     { name: "Contact Us", href: "/contact" },
-    { name: "Shipping Information", href: "/shipping" },
-    { name: "Returns & Exchanges", href: "/returns" },
-    { name: "Size Guide", href: "/size-guide" },
-    { name: "FAQs", href: "/faq" },
-    { name: "Store Locator", href: "/stores" },
-    { name: "Gift Cards", href: "/gift-cards" },
-    { name: "Order Tracking", href: "/track-order" }
+    // { name: "Shipping Information", href: "/shipping" },
+    // { name: "Returns & Exchanges", href: "/returns" },
+    // { name: "Size Guide", href: "/size-guide" },
+    // { name: "FAQs", href: "/faq" },
+    // { name: "Store Locator", href: "/stores" },
+    // { name: "Gift Cards", href: "/gift-cards" },
+    // { name: "Order Tracking", href: "/track-order" }
   ];
 
   const features = [
@@ -223,27 +220,17 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © {currentYear} FBB Luxury. All rights reserved.
+              © {currentYear} FBB Store. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
               <div className="flex items-center space-x-2">
                 <span>Language:</span>
                 <select className="bg-transparent border-none focus:outline-none text-white">
                   <option>English</option>
-                  <option>العربية</option>
-                  <option>Français</option>
-                  <option>Español</option>
+                 
                 </select>
               </div>
-              <div className="flex items-center space-x-2">
-                <span>Currency:</span>
-                <select className="bg-transparent border-none focus:outline-none text-white">
-                  <option>$ USD</option>
-                  <option>€ EUR</option>
-                  <option>£ GBP</option>
-                  <option>¥ JPY</option>
-                </select>
-              </div>
+             
               <div className="flex items-center space-x-2">
                 <span>Country:</span>
                 <select className="bg-transparent border-none focus:outline-none text-white">
@@ -259,7 +246,7 @@ export default function Footer() {
           
           <div className="mt-6 pt-6 border-t border-gray-800 text-center">
             <p className="text-gray-500 text-xs">
-              FBB Luxury is a registered trademark. All products are authentic and sourced directly from authorized distributors.
+              FBB Store is a registered trademark. All products are authentic and sourced directly from authorized distributors.
               Prices are inclusive of all taxes where applicable.
             </p>
           </div>
