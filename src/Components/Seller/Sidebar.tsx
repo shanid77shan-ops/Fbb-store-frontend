@@ -16,7 +16,7 @@ export const SellerSidebar: React.FC<SellerSidebarProps> = ({ activePage, onClos
 
   const handleLogout = (): void => {
     localStorage.removeItem('sellerToken');
-    navigate('/seller/login');
+    navigate('/seller/');
   };
 
   const isActive = (page: string): boolean => activePage === page;

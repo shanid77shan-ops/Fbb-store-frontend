@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, ShoppingCart, Heart, User, LogOut, Package } from 'lucide-react';
-import fbb from "./Img/fbb.png";
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { baseurl } from '../../Constant/Base';
@@ -80,7 +79,7 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
   const [cartCount, setCartCount] = useState(0);
   const [wishlistCount, setWishlistCount] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
-  const [, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
@@ -119,6 +118,16 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
     checkAuthStatus();
     fetchCartData();
     fetchWishlistData();
+    
+    const handleAuthChange = () => {
+      checkAuthStatus();
+    };
+    
+    window.addEventListener('auth-change', handleAuthChange);
+    
+    return () => {
+      window.removeEventListener('auth-change', handleAuthChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -194,7 +203,7 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
   const fetchWishlistData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await api.get('/cart/wishlist', {
+      const response = await api.get('/wishlist', {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
       if (response.data.success) {
@@ -240,7 +249,7 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
   const removeFromCart = async (cartItemId: string) => {
     try {
       const token = localStorage.getItem('token');
-      await api.delete(`/cart/cart/remove/${cartItemId}`, {
+      await api.delete(`/cart/remove/${cartItemId}`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
       fetchCartData();
@@ -267,7 +276,7 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
   const removeFromWishlist = async (productId: string) => {
     try {
       const token = localStorage.getItem('token');
-      await api.delete(`/cart/wishlist/remove/${productId}`, {
+      await api.delete(`/wishlist/remove/${productId}`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
       fetchWishlistData();
@@ -279,7 +288,7 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
   const moveToCart = async (productId: string) => {
     try {
       const token = localStorage.getItem('token');
-      await api.post('/cart/wishlist/move-to-cart', { productId }, {
+      await api.post('/wishlist/move-to-cart', { productId }, {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
       fetchCartData();
@@ -307,6 +316,7 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
     setShowAuthModal(false);
     fetchCartData();
     fetchWishlistData();
+    window.dispatchEvent(new Event('auth-change'));
   };
 
   const handleOtpVerifySuccess = async () => {
@@ -314,11 +324,11 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
     setShowOtpModal(false);
     fetchCartData();
     fetchWishlistData();
+    window.dispatchEvent(new Event('auth-change'));
   };
 
   const handleLogout = async () => {
     try {
-      await api.post('/user/logout');
       localStorage.removeItem('token');
       localStorage.removeItem('userData');
       setIsLogged(false);
@@ -329,6 +339,7 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
       setWishlistCount(0);
       setShowProfileDropdown(false);
       setIsOpen(false);
+      window.dispatchEvent(new Event('auth-change'));
       navigate('/');
     } catch (error) {
       console.error('Logout error:', error);
@@ -529,17 +540,14 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
 
   return (
     <>
-   <nav
-  className={`fixed top-0 left-0 w-full z-40 h-24 
-  transition-colors duration-300 ease-out
-  ${getBgColor()} border-b border-gray-800/50`}
->
-
+      <nav
+        className={`fixed top-0 left-0 w-full z-40 h-24 transition-colors duration-300 ease-out ${getBgColor()} border-b border-gray-800/50`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex items-center justify-between h-full">
             <div className="flex-shrink-0 flex items-center">
               <img 
-                src={fbb} 
+                src="/fbb.png" 
                 alt="FBB Luxury" 
                 className="h-20 w-auto object-contain cursor-pointer hover:opacity-90 transition-opacity duration-300"
                 onClick={() => navigate('/')}
@@ -766,13 +774,13 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
         }}
       />
 
-<OtpModal
-  show={showOtpModal}
-  onClose={() => setShowOtpModal(false)}
-  email={registeredEmail}
-  onVerifySuccess={handleOtpVerifySuccess}
-  onLoginSuccess={handleLoginSuccess} 
-/>
+      <OtpModal
+        show={showOtpModal}
+        onClose={() => setShowOtpModal(false)}
+        email={registeredEmail}
+        onVerifySuccess={handleOtpVerifySuccess}
+        onLoginSuccess={handleLoginSuccess} 
+      />
 
       <ForgotPasswordModal
         show={showForgotPasswordModal}

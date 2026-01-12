@@ -145,7 +145,10 @@ const CartPage = () => {
 
   const moveToWishlist = async (productId: string) => {
     try {
-      await api.post('/cart/wishlist/add', { productId });
+      await api.post('/wishlist/add', { productId },{
+        headers: { Authorization: `Bearer ${token}` }
+
+      });
       await removeItem(productId);
       toast.success('Moved to wishlist');
     } catch (error) {
@@ -156,7 +159,10 @@ const CartPage = () => {
 
   const clearCart = async () => {
     try {
-      await api.delete('/cart/cart/clear');
+      await api.delete('/cart/clear',{
+        headers: { Authorization: `Bearer ${token}` }
+
+      });
       toast.success('Cart cleared');
       await fetchCartData();
     } catch (error) {
