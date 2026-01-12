@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { User, MapPin, ShoppingBag, Heart, Settings, LogOut, Package, Clock, Truck, CheckCircle, Edit, Mail, Phone, CreditCard, Trash2, Plus, Minus, Lock, Printer, Download, ChevronLeft, X, AlertCircle, Star, Home, Building } from 'lucide-react';
+import { User, MapPin, ShoppingBag, Heart, Settings, LogOut, Package, Clock, Truck, CheckCircle, Edit, Mail, Phone, CreditCard, Trash2, Plus, Minus, Lock, Printer, Download, ChevronLeft, X, AlertCircle, Home, Building } from 'lucide-react';
 import axios from 'axios';
 import { baseurl } from '../../Constant/Base';
 import Footer from '../Layouts/Footer';

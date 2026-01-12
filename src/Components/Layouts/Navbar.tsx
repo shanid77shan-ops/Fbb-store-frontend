@@ -94,6 +94,9 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
     baseURL: baseurl,
   });
 
+  let first = loading
+  console.log(first)
+
   const navItems: NavItem[] = [
     { label: 'Home', href: '/' },
     { 
@@ -185,9 +188,11 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
+  
       const response = await api.get('/cart', {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
+  
       if (response.data.success) {
         setCartItems(response.data.cart || []);
         setCartCount(response.data.cartCount || 0);
@@ -199,6 +204,7 @@ const NavBar: React.FC<NavBarProps> = ({ isTransparent = false }) => {
       setLoading(false);
     }
   };
+  
 
   const fetchWishlistData = async () => {
     try {
