@@ -42,7 +42,7 @@ const OtpModal: React.FC<OtpModalProps> = ({
   }, [show]);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: number;
     if (resendTimer > 0) {
       timer = setTimeout(() => setResendTimer(resendTimer - 1), 1000);
     }
